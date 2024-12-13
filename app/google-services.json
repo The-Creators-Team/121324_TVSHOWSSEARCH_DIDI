@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "615395856558",
+    "project_id": "tvshowssearch",
+    "storage_bucket": "tvshowssearch.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615395856558:android:d339d2f593cbc3eebd1d3f",
+        "android_client_info": {
+          "package_name": "com.example.tvshowssearch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615395856558-6ttkjjkjqmmbgo9q6npqp07amc37oo59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tvshowssearch",
+            "certificate_hash": "c5362ce49f2c144c63b21b44b30a136f12e82153"
+          }
+        },
+        {
+          "client_id": "615395856558-moa9b4uqfjkrskr6i29nds01csrp0rpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbbDQWlIko3jTtdAI123QWKB6OpZ5lfm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615395856558-moa9b4uqfjkrskr6i29nds01csrp0rpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
