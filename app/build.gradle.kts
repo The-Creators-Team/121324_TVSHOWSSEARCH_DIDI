@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -63,7 +66,15 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v250)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v250)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(platform(libs.okhttp.bom))
 
 }

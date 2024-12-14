@@ -1,5 +1,9 @@
 package com.example.tvshowssearch
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
@@ -10,23 +14,22 @@ import kotlin.math.abs
 
 class TVShowViewModel(private val apiService: TVMazeApiService) : ViewModel() {
 
-    // LiveData for holding the result
     fun searchShowByName(query: String) = liveData(Dispatchers.IO) {
         try {
             val response = apiService.searchShowByName(query)
             if (response.isSuccessful && response.body() != null) {
                 val tvShow = response.body()
                 tvShow?.let {
-                    // Calculate the number of days since the show premiered
                     val daysSincePremiere = calculateDaysSincePremiere(it.premiered)
                     it.daysSincePremiere = daysSincePremiere
+
                 }
                 emit(tvShow)
             } else {
-                emit(null) // No data found
+                emit(null)
             }
         } catch (e: Exception) {
-            emit(null) // Handle errors (e.g. network failure)
+            emit(null)
         }
     }
 
@@ -39,9 +42,9 @@ class TVShowViewModel(private val apiService: TVMazeApiService) : ViewModel() {
             val differenceInMillis = currentDate.time - premiereDateParsed.time
             val differenceInDays = (differenceInMillis / (1000 * 60 * 60 * 24)).toLong()
 
-            abs(differenceInDays) // Return positive value
+            abs(differenceInDays)
         } catch (e: Exception) {
-            0L  // If the date is invalid or parsing fails, return 0 days
+            0L
         }
     }
 }
