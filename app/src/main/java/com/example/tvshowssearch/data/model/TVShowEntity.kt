@@ -1,4 +1,4 @@
-package com.example.tvshowssearch
+package com.example.tvshowssearch.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

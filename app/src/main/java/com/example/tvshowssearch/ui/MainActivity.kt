@@ -1,25 +1,25 @@
-package com.example.tvshowssearch
+package com.example.tvshowssearch.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tvshowssearch.data.api.RetrofitInstance
+import com.example.tvshowssearch.ui.viewmodel.ShowViewModelFactory
+import com.example.tvshowssearch.ui.viewmodel.TVShowViewModel
 import com.example.tvshowssearch.databinding.ActivityMainBinding
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var analytics: FirebaseAnalytics
     private lateinit var binding: ActivityMainBinding
     private val tvShowViewModel: TVShowViewModel by viewModels{
         ShowViewModelFactory(RetrofitInstance.retrofitService)
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        analytics = Firebase.analytics
 
 
         binding.searchButton.setOnClickListener {

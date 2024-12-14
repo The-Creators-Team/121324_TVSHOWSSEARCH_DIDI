@@ -1,4 +1,4 @@
-package com.example.tvshowssearch
+package com.example.tvshowssearch.data.model
 
 import android.content.Context
 import androidx.room.Database

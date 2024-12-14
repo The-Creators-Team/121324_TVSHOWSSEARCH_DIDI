@@ -1,4 +1,4 @@
-package com.example.tvshowssearch
+package com.example.tvshowssearch.data.model
 
 data class TVShow(
     val id: Int,

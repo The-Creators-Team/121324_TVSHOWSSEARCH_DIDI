@@ -1,11 +1,8 @@
-package com.example.tvshowssearch
+package com.example.tvshowssearch.ui.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.example.tvshowssearch.data.api.TVMazeApiService
 import kotlinx.coroutines.Dispatchers
 import java.text.SimpleDateFormat
 import java.util.Date
