@@ -5,6 +5,7 @@ data class TVShow(
     val name: String,
     val premiered: String,
     val image: Image?,
+    val url: String,
     var daysSincePremiere: Long = 0L
 ) {
     data class Image(

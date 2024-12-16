@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var analytics: FirebaseAnalytics
     private lateinit var binding: ActivityMainBinding
     private val tvShowViewModel: TVShowViewModel by viewModels{
-        ShowViewModelFactory(RetrofitInstance.retrofitService)
+        ShowViewModelFactory(applicationContext)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +35,13 @@ class MainActivity : AppCompatActivity() {
         binding.searchButton.setOnClickListener {
             val query = binding.searchEditText.text.toString()
             if (query.isNotEmpty()) {
-                searchTVShow(query)
+                tvShowViewModel.searchTVShowByName(binding.searchEditText.text.toString())
             } else {
                 Toast.makeText(this, "Please enter a show name", Toast.LENGTH_SHORT).show()
             }
         }
+
+        searchTVShow()
 
         auth = FirebaseAuth.getInstance()
 
@@ -53,8 +55,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun searchTVShow(query: String) {
-        tvShowViewModel.searchShowByName(query).observe(this, Observer { tvShow ->
+    private fun searchTVShow() {
+        tvShowViewModel.tvShow.observe(this, Observer { tvShow ->
             if (tvShow != null) {
 
                 binding.showNameTextView.text = tvShow.name
@@ -62,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 Glide.with(this)
-                    .load(tvShow.image?.medium)
+                    .load(tvShow.url)
                     .into(binding.showImageView)
             } else {
 
